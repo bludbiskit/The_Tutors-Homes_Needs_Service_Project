@@ -143,8 +143,8 @@
           </li>
         </ul>
         <?php if(isset($_SESSION['email'])) {?>
-          <a style="margin-right: 5px" href="./SignIn.php" class="btn btn-outline-succes">Sign In</a>
-          <a href="./SignUp.php" class="btn btn-outline-succes">Sign Up</a>
+          <a style="margin-right: 5px" href="./SignIn.php" class="btn btn-outline-success">Sign In</a>
+          <a href="./SignUp.php" class="btn btn-outline-success">Sign Up</a>
         <?php } else{?>
           <a style="margin-right: 5px" href="./SignOut.php" class="btn btn-outline-danger">Sign Out</a>
           <a href="./profile.php" class="btn btn-outline-success">View Profile</a>
