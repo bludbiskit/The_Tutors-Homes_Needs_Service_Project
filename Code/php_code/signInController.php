@@ -28,6 +28,18 @@ if ($result->num_rows > 0) {
     echo phpAlert("Incorrect Password", "signIn.php");
   }
   else {
+    $sql = "SELECT Servicer_ID from servicers where User_ID='$row[0]'";
+    $result = $conn->query($sql);
+    $servicer_ID = $result->fetch_row();
+    if(isset($servicer_ID)){
+      $sql = "SELECT Service from providesservice where Servicer_ID='$servicer_ID[0]'";
+      $result = $conn->query($sql);
+      $x = 0;
+      while($thing = $result->fetch_row()) {
+        $_SESSION['services'][$x] = $thing[0];
+        $x = $x + 1;
+      }
+    }
     $_SESSION['firstName'] = $row[1];
     $_SESSION['lastName'] = $row[2];
     $_SESSION['phone'] = $row[3];
