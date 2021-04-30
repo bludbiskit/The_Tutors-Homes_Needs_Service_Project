@@ -244,13 +244,39 @@
                             <input type="file" class="form-control-file" id="exampleFormControlFile1">
                         </div>
                     </div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <h6 class="mb-2 text-primary">Update Services</h6>
+                    </div>
+                    <?php if(isset($_SESSION['services'])) {?>
+                    <?php 
+                        // Include the database configuration file  
+                        require_once 'dbConfig.php'; 
+                        
+                        // Get image data from database 
+                        $result = $conn->query("SELECT * from services"); 
+                        //$row = $result->fetch_assoc();
+                        //echo (in_array($row['Service'], $_SESSION['services']) ? "defaultCheck2" : "defaultCheck1");
+                    ?>
+                    <?php if($result->num_rows > 0){ ?> 
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <?php while($row = $result->fetch_assoc()){ ?> 
+                            <div class="form-check" id="servicesList">
+                                <input class="form-check-input" type="checkbox" name="check_list[]" value="<?php echo $row['Service']; ?>" id="<?php $checked = (in_array($row['Service'], $_SESSION['services']) ? "defaultCheck2" : "defaultCheck1"); ?>" >
+                                <label class="form-check-label" for="<?php $checked = (in_array($row['Service'], $_SESSION['services']) ? "defaultCheck2" : "defaultCheck1"); ?>">
+                                    <?php echo $row['Service']; ?>
+                                </label>
+                            </div>
+                        <?php } ?> 
+                    </div>
+                    <?php } ?>
+                    <?php }?>
                 </div>
-            </div>
-            <div class="row gutters">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div class="text-right">
-                        <button type="button" id="submit" name="submit" class="btn btn-secondary">Cancel</button>
-                        <button type="button" id="submit" name="submit" class="btn btn-primary">Update</button>
+                <div class="row gutters">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="text-right">
+                            <a href="./main.php" class="btn btn-outline-secondary">Return to Home</a>
+                            <button type="button" id="submit" name="submit" class="btn btn-primary">Update</button>
+                        </div>
                     </div>
                 </div>
             </div>
