@@ -61,11 +61,10 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" href="./main.php">Home</a>
           </li>
         </ul>
-        <button style="margin-right: 5px" class="btn btn-outline-success" type="submit">Sign In</button>
-        <button class="btn btn-outline-success" type="submit">Sign Up</button>
+        <a href="./SignUp.php" class="btn btn-outline-success">Sign Up</a>
       </div>
     </div>
   </nav>
