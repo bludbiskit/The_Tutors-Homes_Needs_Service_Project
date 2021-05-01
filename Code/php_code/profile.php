@@ -113,37 +113,37 @@
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                         <div class="form-group">
                             <label for="firstName">First Name</label>
-                            <input type="text" class="form-control" id="firstName" placeholder="<?php echo $_SESSION['firstName'] ?>">
+                            <input name="firstName" type="text" class="form-control" id="firstName" placeholder="<?php echo $_SESSION['firstName'] ?>">
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                         <div class="form-group">
                             <label for="lastName">Last Name</label>
-                            <input type="text" class="form-control" id="lastName" placeholder="<?php echo $_SESSION['lastName'] ?>">
+                            <input name="lastName" type="text" class="form-control" id="lastName" placeholder="<?php echo $_SESSION['lastName'] ?>">
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="<?php echo $_SESSION['email'] ?>">
+                            <input name="email" type="email" class="form-control" id="email" placeholder="<?php echo $_SESSION['email'] ?>">
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="text" class="form-control" id="password" placeholder="<?php echo $_SESSION['password'] ?>">
+                            <input name="password" type="text" class="form-control" id="password" placeholder="<?php echo $_SESSION['password'] ?>">
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                         <div class="form-group">
                             <label for="phone">Phone</label>
-                            <input type="text" class="form-control" id="phone" placeholder="<?php echo $_SESSION['phone'] ?>">
+                            <input name="phone" type="text" class="form-control" id="phone" placeholder="<?php echo $_SESSION['phone'] ?>">
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                         <div class="form-group">
                             <label for="diversLicense">License Number</label>
-                            <input type="text" class="form-control" id="driversLicense" placeholder="<?php echo $_SESSION['licenseNumber'] ?>">
+                            <input name="license" type="text" class="form-control" id="driversLicense" placeholder="<?php echo $_SESSION['licenseNumber'] ?>">
                         </div>
                     </div>
                 </div>
@@ -154,19 +154,19 @@
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                         <div>
                             <label for="streetAddress">Street Address</label>
-                            <input type="name" class="form-control" id="streetAddress" placeholder="<?php echo $_SESSION['streetAddress'] ?>">
+                            <input name="address" type="name" class="form-control" id="streetAddress" placeholder="<?php echo $_SESSION['streetAddress'] ?>">
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                         <div class="form-group">
                             <label for="city">City</label>
-                            <input type="name" class="form-control" id="city" placeholder="<?php echo $_SESSION['city'] ?>">
+                            <input name="city" type="name" class="form-control" id="city" placeholder="<?php echo $_SESSION['city'] ?>">
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                         <div class="form-group">
                             <label for="zip">Zip Code</label>
-                            <input type="text" class="form-control" id="zip" placeholder="<?php echo $_SESSION['zip'] ?>">
+                            <input name="zip" type="text" class="form-control" id="zip" placeholder="<?php echo $_SESSION['zip'] ?>">
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
@@ -235,18 +235,48 @@
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                         <div class="form-group">
                             <label for="exampleFormControlFile1">Update Profile Picture</label>
-                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                            <input name="profilePicture" type="file" class="form-control-file" id="exampleFormControlFile1">
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                         <div class="form-group">
                             <label for="exampleFormControlFile1">Update Driver's License Picture</label>
-                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                            <input name="driversLicensePicture" type="file" class="form-control-file" id="exampleFormControlFile1">
+                        </div>
+                    </div>
+
+                    <?php if(isset($_SESSION['services'])) {?>
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <h6 class="mb-2 text-primary">Miles Willing to Travel</h6>
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <input name="distance" type="text" class="form-control" id="distance" placeholder="<?php echo $_SESSION['distance'] ?>">
                         </div>
                     </div>
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <h6 class="mb-2 text-primary">Update Services</h6>
+                        <h6 class="mb-2 text-primary">Services Currently Listed</h6>
                     </div>
+                    <?php 
+                        // Include the database configuration file  
+                        require_once 'dbConfig.php'; 
+                        
+                        // Get image data from database 
+                        $result = $conn->query("SELECT * from services"); 
+                        //$row = $result->fetch_assoc();
+                        //echo (in_array($row['Service'], $_SESSION['services']) ? "defaultCheck2" : "defaultCheck1");
+                    ?>
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <?php for($x = 0; $x < count($_SESSION['services']); $x++){ ?> 
+                            <div class="form-check" id="servicesList">
+                                <p><?php echo $_SESSION['services'][$x] ?></p>
+                            </div>
+                        <?php } ?> 
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <h6 class="mb-2 text-primary">Select Any Services You Would Like to Perform</h6>
+                    </div>
+                    <?php } ?>
                     <?php if(isset($_SESSION['services'])) {?>
                     <?php 
                         // Include the database configuration file  
