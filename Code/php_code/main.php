@@ -124,7 +124,8 @@
 
     </style>
 
-    
+<?php session_start()?>
+
     <!-- Custom styles for this template -->
   </head>
   <body>
@@ -143,11 +144,11 @@
           </li>
         </ul>
         <?php if(isset($_SESSION['email'])) {?>
-          <a style="margin-right: 5px" href="./SignIn.php" class="btn btn-outline-success">Sign In</a>
-          <a href="./SignUp.php" class="btn btn-outline-success">Sign Up</a>
-        <?php } else{?>
           <a style="margin-right: 5px" href="./SignOut.php" class="btn btn-outline-danger">Sign Out</a>
           <a href="./profile.php" class="btn btn-outline-success">View Profile</a>
+        <?php } else{?>
+          <a style="margin-right: 5px" href="./SignIn.php" class="btn btn-outline-success">Sign In</a>
+          <a href="./SignUp.php" class="btn btn-outline-success">Sign Up</a>
         <?php }?>
       </div>
     </div>
@@ -168,8 +169,8 @@
 
         <div class="container">
           <div class="carousel-caption text-start">
-            <h1>Example headline.</h1>
-            <p>Some representative placeholder content for the first slide of the carousel.</p>
+            <h1>Make Your Life Easier!</h1>
+            <p>Register for our convenient services.</p>
             <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
           </div>
         </div>
